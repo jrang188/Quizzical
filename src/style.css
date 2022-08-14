@@ -1,3 +1,70 @@
 * {
   box-sizing: border-box;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+
+}
+
+body { 
+  height: 100vh;
+  width: 100vw;
+  margin: auto;
+  background: #f5f7fb;
+  padding: 6em;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #293264;
+  text-align: center;
+  font-size: 16px;
+}
+
+.intro-title {
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.2rem;
+  margin-bottom: 0;
+}
+
+.intro-desc {
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2rem;
+  margin-bottom: 0;
+  margin-top: 0.4375rem;
+}
+
+.intro-btn {
+  background: #4d5b9e;
+  border-radius: 0.938rem;
+  border: none;
+  line-height: 2.2rem;
+  color: #f5f7fb;
+  font-style: normal;
+  font-weight: 500;
+  width: 12.5em;
+  height: 3.125em;
+  margin-top: 29px;
+}
+
+.intro-yellow-blob {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.intro-blue-blob {
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
