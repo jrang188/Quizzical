@@ -1,8 +1,9 @@
 import React from "react";
-import {ReactComponent as YellowBlob} from "../assets/yellow_blob.svg";
-import {ReactComponent as BlueBlob} from "../assets/blue_blob.svg";
+import PropTypes from "prop-types";
+import { ReactComponent as YellowBlob } from "../assets/yellow_blob.svg";
+import { ReactComponent as BlueBlob } from "../assets/blue_blob.svg";
 
-export default function Intro() {
+function Intro({ startQuiz }) {
   return (
     <div className="intro">
       <div className="intro-yellow-blob">
@@ -10,7 +11,7 @@ export default function Intro() {
       </div>
       <h1 className="intro-title">Quizzical</h1>
       <h2 className="intro-desc">Some description if needed</h2>
-      <button className="intro-btn" type="button">
+      <button className="intro-btn" type="button" onClick={startQuiz}>
         Start quiz
       </button>
       <div className="intro-blue-blob">
@@ -19,3 +20,9 @@ export default function Intro() {
     </div>
   );
 }
+
+Intro.propTypes = {
+  startQuiz: PropTypes.func,
+};
+
+export default Intro;
