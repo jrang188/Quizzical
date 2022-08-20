@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 import PropTypes from "prop-types";
 import { ReactComponent as YellowBlob } from "../assets/yellow_blob.svg";
@@ -22,7 +23,7 @@ function Intro({ startQuiz }) {
 }
 
 Intro.propTypes = {
-  startQuiz: PropTypes.func,
+  startQuiz: PropTypes.func.isRequired,
 };
 
 export default Intro;
