@@ -7,7 +7,7 @@ import { ReactComponent as BlueBlob } from "../assets/blue_blob.svg";
 function Intro({ startQuiz }) {
   return (
     <div className="intro">
-      <div className="intro-yellow-blob">
+      <div className="yellow-blob">
         <YellowBlob />
       </div>
       <h1 className="intro-title">Quizzical</h1>
@@ -15,7 +15,7 @@ function Intro({ startQuiz }) {
       <button className="intro-btn" type="button" onClick={startQuiz}>
         Start quiz
       </button>
-      <div className="intro-blue-blob">
+      <div className="blue-blob">
         <BlueBlob />
       </div>
     </div>
