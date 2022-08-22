@@ -85,7 +85,7 @@ body {
 .quiz {
   color: #293264;
   font-weight: 500;
-  min-width: 25em;
+  min-width: 75vw;
 }
 
 .quiz-container {
@@ -95,7 +95,7 @@ body {
 }
 
 .quiz-question {
-  max-width: 25em;
+  max-width: 65vw;
   line-height: 1.1875rem;
   margin-bottom: 0.75rem;
   margin-top: 0.9375rem;
@@ -120,8 +120,10 @@ body {
   color: #293264;
   min-width: 4.12rem;
   min-height: 1.2906rem;
-  border: 0.794239px solid #4d5b9e;
-  border-radius: 7.94239px;
+  max-width: 7.5rem;
+  max-height: 3rem;
+  border: 0.0496rem solid #4d5b9e;
+  border-radius: 0.4964rem;
   background: 0;
   margin-right: 12.71px;
 }
