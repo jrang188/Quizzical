@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 35px;
   font-weight: 400;
   font-family: "Inter", sans-serif;
   font-style: normal;
@@ -125,7 +125,7 @@ body {
   border: 0.0496rem solid #4d5b9e;
   border-radius: 0.4964rem;
   background: 0;
-  margin-right: 12.71px;
+  margin-right: 13px;
 }
 
 .quiz-selected {

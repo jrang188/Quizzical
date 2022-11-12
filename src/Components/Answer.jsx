@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Answer(props) {
+export default function Answer({answer}) {
   return (
     <button type="button" className="quiz-answer">
-      {props.answer}
+      {answer}
     </button>
   );
 }
