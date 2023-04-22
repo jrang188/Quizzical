@@ -1,20 +1,20 @@
-// import { useState } from "react";
-import YellowBlob from './assets/yellow_blob.svg';
-import BlueBlob from './assets/blue_blob.svg';
-import Intro from './components/Intro';
+import { useState } from "react";
+import YellowBlob from "./assets/yellow_blob.svg";
+import BlueBlob from "./assets/blue_blob.svg";
+import Intro from "./components/Intro";
 
 export default function App() {
-  // const [isIntro, setIsIntro] = React.useState(true);
+  const [isIntro, setIsIntro] = useState(true);
 
-  // function startQuiz() {
-  //   setIsIntro((prevState) => !prevState);
-  // }
+  const startQuiz = () => {
+    setIsIntro((prevState) => !prevState);
+  };
 
   return (
     <main className="flex min-h-screen bg-[#F5F7FB]">
       <img src={YellowBlob} alt="Yellow Blob" className="fixed top-0 right-0" />
       <div className="container mx-auto flex flex-col items-center justify-center ">
-        <Intro />
+        {isIntro ? <Intro startQuiz={startQuiz} /> : <p>test</p>}
       </div>
       <img src={BlueBlob} alt="Blue Blob" className="fixed bottom-0 left-0" />
     </main>

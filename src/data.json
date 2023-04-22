@@ -1,0 +1,30 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "question": "How would one say goodbye in Spanish?",
+      "correct_answer": "Adios",
+      "incorrect_answers": ["Hola", "Au Revoir", "Salir"]
+    },
+    {
+      "question": "Which best selling toy of 1983 caused hysteria, resulting in riots breaking in stores?",
+      "correct_answer": "Cabbage Patch Kids",
+      "incorrect_answers": ["Transformers", "Care Bears", "Rubik's Cube"]
+    },
+    {
+      "question": "What is the hottest planet in our Solar System?",
+      "correct_answer": "Venus",
+      "incorrect_answers": ["Mercury", "Mars", "Saturn"]
+    },
+    {
+      "question": "How many states are in Australia?",
+      "correct_answer": "Mexico",
+      "incorrect_answers": ["Italy", "Portugal", "Mexico"]
+    },
+    {
+      "question": "How Many Hearts Does An Octopus Have?",
+      "correct_answer": "Three",
+      "incorrect_answers": ["One", "Two", "Four"]
+    }
+  ]
+}
