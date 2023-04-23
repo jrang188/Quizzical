@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Question from './Question';
 import axios from 'axios';
-// import data from '../data.json';
 
 interface DataProps {
   category: string;
@@ -12,7 +11,7 @@ interface DataProps {
   incorrect_answers: string[];
 }
 
-export default function Quiz() {
+const Quiz = () => {
   const [data, setData] = useState<DataProps[]>([]);
 
   useEffect(() => {
@@ -22,16 +21,14 @@ export default function Quiz() {
 
     const getQuestions = async () => {
       const res = await client.get('?amount=5');
-      setData(res.data.results);
-    }
-
+      setData(res.data?.results);
+    };
     getQuestions();
-  }, []);
+  },[]);
 
-  const questions = data.map((q) => {
-    console.log(data);
+  const questions = data.map((q, i) => {
     const answers = [q.correct_answer, ...q.incorrect_answers];
-    return <Question question={q.question} answers={answers} />;
+    return <Question key={i} question={q.question} answers={answers} />;
   });
 
   return (
@@ -47,4 +44,6 @@ export default function Quiz() {
       </div>
     </div>
   );
-}
+};
+
+export default Quiz;

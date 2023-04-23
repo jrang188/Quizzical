@@ -6,7 +6,7 @@ interface QuestionProps {
 }
 
 const Question = ({ question, answers }: QuestionProps) => {
-  const answersComponent = answers.map((ans) => <Answer answer={ans} />);
+  const answersComponent = answers.map((ans, i) => <Answer answer={ans} key={i} />);
 
   return (
     <>
