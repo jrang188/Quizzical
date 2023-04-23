@@ -13,11 +13,11 @@ export default function App() {
 
   return (
     <main className="flex min-h-screen bg-[#F5F7FB]">
-      <img src={YellowBlob} alt="Yellow Blob" className="fixed top-0 right-0" />
-      <div className="container mx-auto flex flex-col items-center justify-center ">
+      <img src={YellowBlob} alt="Yellow Blob" className="fixed z-0 top-0 right-0" />
+      <div className="container mx-auto py-16 flex flex-col items-center justify-center z-50">
         {isIntro ? <Intro startQuiz={startQuiz} /> : <Quiz />}
       </div>
-      <img src={BlueBlob} alt="Blue Blob" className="fixed bottom-0 left-0" />
+      <img src={BlueBlob} alt="Blue Blob" className="fixed z-0 bottom-0 left-0" />
     </main>
   );
 }
