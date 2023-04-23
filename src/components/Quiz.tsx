@@ -28,7 +28,7 @@ const Quiz = () => {
 
   const questions = data.map((q, i) => {
     const answers = [q.correct_answer, ...q.incorrect_answers];
-    return <Question key={i} question={q.question} answers={answers} />;
+    return <Question key={i} question={q.question} answers={answers} corrrectAnswer={q.correct_answer}/>;
   });
 
   return (

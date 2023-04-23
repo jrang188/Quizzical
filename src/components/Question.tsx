@@ -4,10 +4,24 @@ import Answer from './Answer';
 interface QuestionProps {
   question: string;
   answers: string[];
+  corrrectAnswer: string;
 }
 
+const shuffleArray = (array: string[]) => {
+  const shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+};
+
 const Question = ({ question, answers }: QuestionProps) => {
-  const answersComponent = answers.map((ans, i) => <Answer answer={ans} key={i} />);
+  const shuffledAnswers = answers.length == 2 ? shuffleArray(answers) : answers;
+
+  const answersComponent = shuffledAnswers.map((ans, i) => (
+    <Answer answer={ans} key={i} />
+  ));
 
   return (
     <>
