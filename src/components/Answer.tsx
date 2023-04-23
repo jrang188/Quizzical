@@ -1,3 +1,5 @@
+import parse from 'html-react-parser';
+
 interface AnswerProps {
   answer: string;
 }
@@ -9,7 +11,7 @@ const Answer = ({ answer }: AnswerProps) => {
       className="border-[#4D5B9E] border-solid border rounded-md min-w-[66px] px-1.5"
     >
       <div className="font-inter font-medium text-sm text-[#293264]">
-        {answer}
+        {parse(answer)}
       </div>
     </button>
   );
