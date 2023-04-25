@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
-import parse from 'html-react-parser';
-import Answer from './Answer';
-import shuffleArray from '../functions/shuffleArray';
+import { useState, useEffect, useCallback } from "react";
+import parse from "html-react-parser";
+import Answer from "./Answer";
+import shuffleArray from "../functions/shuffleArray";
 
 interface QuestionProps {
   question: string;
@@ -18,7 +18,7 @@ const Question = ({
   quizDone,
   increaseScore,
 }: QuestionProps) => {
-  const [selectedAnswer, setSelectedAnswer] = useState('');
+  const [selectedAnswer, setSelectedAnswer] = useState("");
   const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
 
   useEffect(() => {

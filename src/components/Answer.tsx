@@ -1,4 +1,4 @@
-import parse from 'html-react-parser';
+import parse from "html-react-parser";
 
 interface AnswerProps {
   answer: string;
@@ -21,13 +21,13 @@ const Answer = ({
       className={`rounded-md min-w-[66px] px-1.5 ${
         quizDone
           ? correct
-            ? 'bg-[#94D7A2]'
+            ? "bg-[#94D7A2]"
             : selected
-            ? 'bg-[#F8BCBC] opacity-50'
-            : 'border-[#4D5B9E] border-solid border opacity-50'
+            ? "bg-[#F8BCBC] opacity-50"
+            : "border-[#4D5B9E] border-solid border opacity-50"
           : selected
-          ? 'bg-[#D6DBF5]'
-          : 'border-[#4D5B9E] border-solid border'
+          ? "bg-[#D6DBF5]"
+          : "border-[#4D5B9E] border-solid border"
       }`}
       onClick={handleSelectedAnswer}
       disabled={quizDone}

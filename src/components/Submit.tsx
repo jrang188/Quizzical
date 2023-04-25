@@ -2,10 +2,10 @@ interface SubmitProps {
   resetQuiz: () => void;
   checkAnswers: () => void;
   quizDone: boolean;
-  score: number
+  score: number;
 }
 
-const Submit = ({ quizDone, score, resetQuiz, checkAnswers}: SubmitProps) => {
+const Submit = ({ quizDone, score, resetQuiz, checkAnswers }: SubmitProps) => {
   return (
     <div className="mt-5">
       {quizDone ? (

@@ -1,6 +1,6 @@
 const shuffleArray = (array: string[]) => {
   if (array.length === 2) {
-    return ['True', 'False'];
+    return ["True", "False"];
   }
 
   const shuffledArray = [...array];
