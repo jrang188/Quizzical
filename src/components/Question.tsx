@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import parse from 'html-react-parser';
 import Answer from './Answer';
 
@@ -17,10 +18,21 @@ const shuffleArray = (array: string[]) => {
 };
 
 const Question = ({ question, answers }: QuestionProps) => {
+  const [selectedAnswer, setSelectedAnswer] = useState('');
+
+  const handleSelectedAnswer = (ans: string) => {
+    setSelectedAnswer(ans);
+  };
+
   const shuffledAnswers = answers.length == 2 ? shuffleArray(answers) : answers;
 
   const answersComponent = shuffledAnswers.map((ans, i) => (
-    <Answer answer={ans} key={i} />
+    <Answer
+      answer={ans}
+      key={i}
+      selected={selectedAnswer == ans}
+      handleSelectedAnswer={() => handleSelectedAnswer(ans)}
+    />
   ));
 
   return (
