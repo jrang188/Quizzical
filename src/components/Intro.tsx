@@ -6,6 +6,7 @@ interface Category {
 
 interface IntroProps {
   startQuiz: () => void;
+  handleQuizOptionsChange: (key: string, value: string) => void;
 }
 
 const categories: Category[] = [
@@ -35,7 +36,7 @@ const categories: Category[] = [
   { id: 32, name: 'Entertainment: Cartoon & Animations' },
 ];
 
-const Intro = ({ startQuiz }: IntroProps) => {
+const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
   const categoryOptions = categories.map(({ id, name }) => ({
     value: id,
     label: name,
@@ -48,19 +49,36 @@ const Intro = ({ startQuiz }: IntroProps) => {
         Leave blank for random
       </h2>
       <div className="flex flex-col justify-center items-center gap-y-2">
-        <Select variant='outline' size='sm' placeholder="Category">
+        <Select
+          variant="outline"
+          size="sm"
+          placeholder="Category"
+          onChange={(s) => handleQuizOptionsChange('category', s.target.value)}
+        >
           {categoryOptions.map(({ value, label }) => (
             <option key={value} value={value}>
               {label}
             </option>
           ))}
         </Select>
-        <Select variant='outline' size='sm' placeholder="Difficulty">
+        <Select
+          variant="outline"
+          size="sm"
+          placeholder="Difficulty"
+          onChange={(s) =>
+            handleQuizOptionsChange('difficulty', s.target.value)
+          }
+        >
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
         </Select>
-        <Select variant='outline' size='sm' placeholder="Type">
+        <Select
+          variant="outline"
+          size="sm"
+          placeholder="Type"
+          onChange={(s) => handleQuizOptionsChange('type', s.target.value)}
+        >
           <option value="multiple">Multiple Choice</option>
           <option value="boolean">True/False</option>
         </Select>
