@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Question from './Question';
 import Submit from './Submit';
 import axios from 'axios';
+import shuffleArray from '../functions/shuffleArray';
 
 interface DataProps {
   category: string;
@@ -37,13 +38,14 @@ const Quiz = ({ startQuiz }: QuizProps) => {
   }, []);
 
   const questions = data.map((q, i) => {
-    const answers = [q.correct_answer, ...q.incorrect_answers];
+    const answers = shuffleArray([q.correct_answer, ...q.incorrect_answers]);
     return (
       <Question
         key={i}
         question={q.question}
         answers={answers}
         correctAnswer={q.correct_answer}
+        quizDone={quizDone}
       />
     );
   });

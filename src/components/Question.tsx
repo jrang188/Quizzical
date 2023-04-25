@@ -1,29 +1,34 @@
 import { useState } from 'react';
 import parse from 'html-react-parser';
 import Answer from './Answer';
-import shuffleArray from '../functions/shuffleArray';
 
 interface QuestionProps {
   question: string;
   answers: string[];
   correctAnswer: string;
+  quizDone: boolean;
 }
 
-const Question = ({ question, answers }: QuestionProps) => {
+const Question = ({
+  question,
+  answers,
+  correctAnswer,
+  quizDone,
+}: QuestionProps) => {
   const [selectedAnswer, setSelectedAnswer] = useState('');
 
   const handleSelectedAnswer = (ans: string) => {
     setSelectedAnswer(ans);
   };
 
-  const shuffledAnswers = answers.length == 2 ? shuffleArray(answers) : answers;
-
-  const answersComponent = shuffledAnswers.map((ans, i) => (
+  const answersComponent = answers.map((ans, i) => (
     <Answer
       answer={ans}
       key={i}
       selected={selectedAnswer == ans}
       handleSelectedAnswer={() => handleSelectedAnswer(ans)}
+      quizDone={quizDone}
+      correct={ans == correctAnswer}
     />
   ));
 

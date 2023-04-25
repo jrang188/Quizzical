@@ -4,14 +4,30 @@ interface AnswerProps {
   answer: string;
   selected: boolean;
   handleSelectedAnswer: () => void;
+  correct: boolean;
+  quizDone: boolean;
 }
 
-const Answer = ({ answer, selected, handleSelectedAnswer }: AnswerProps) => {
+const Answer = ({
+  answer,
+  selected,
+  correct,
+  quizDone,
+  handleSelectedAnswer,
+}: AnswerProps) => {
   return (
     <button
       type="button"
       className={`rounded-md min-w-[66px] px-1.5 ${
-        selected ? 'bg-[#D6DBF5]' : 'border-[#4D5B9E] border-solid border'
+        quizDone
+          ? correct
+            ? 'bg-[#94D7A2]'
+            : selected
+            ? 'bg-[#F8BCBC] opacity-50'
+            : 'border-[#4D5B9E] border-solid border opacity-50'
+          : selected
+          ? 'bg-[#D6DBF5]'
+          : 'border-[#4D5B9E] border-solid border'
       }`}
       onClick={handleSelectedAnswer}
     >
