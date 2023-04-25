@@ -14,9 +14,15 @@ interface DataProps {
 }
 interface QuizProps {
   startQuiz: () => void;
+  quizOptions: { category: string; difficulty: string; type: string };
+  handleQuizOptionsChange: (key: string, value: string) => void;
 }
 
-const Quiz = ({ startQuiz }: QuizProps) => {
+const Quiz = ({
+  startQuiz,
+  quizOptions,
+  handleQuizOptionsChange,
+}: QuizProps) => {
   const [quizDone, setQuizDone] = useState(false);
   const [data, setData] = useState<DataProps[]>([]);
   const [score, setScore] = useState(0);
@@ -33,6 +39,9 @@ const Quiz = ({ startQuiz }: QuizProps) => {
   const resetQuiz = () => {
     startQuiz();
     setScore(() => 0);
+    handleQuizOptionsChange("category", "");
+    handleQuizOptionsChange("difficulty", "");
+    handleQuizOptionsChange("type", "");
   };
 
   useEffect(() => {
@@ -42,7 +51,12 @@ const Quiz = ({ startQuiz }: QuizProps) => {
     });
 
     const getQuestions = async () => {
-      const res = await client.get("?amount=5");
+      const res = await client.get("", {
+        params: {
+          amount: 5,
+          ...quizOptions,
+        },
+      });
       if (!alreadyCalled) {
         setData(res.data?.results);
         setLoading((loading) => !loading);

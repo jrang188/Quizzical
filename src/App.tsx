@@ -4,8 +4,26 @@ import BlueBlob from "./assets/blue_blob.svg";
 import Intro from "./components/Intro";
 import Quiz from "./components/Quiz";
 
+interface quizOptionsProps {
+  category: string;
+  difficulty: string;
+  type: string;
+}
+
 export default function App() {
   const [isIntro, setIsIntro] = useState(true);
+  const [quizOptions, setQuizOptions] = useState<quizOptionsProps>({
+    category: "",
+    difficulty: "",
+    type: "",
+  });
+
+  const handleQuizOptionsChange = (key: string, value: string) => {
+    setQuizOptions((prevState) => ({
+      ...prevState,
+      [key]: value,
+    }));
+  };
 
   const startQuiz = () => {
     setIsIntro((prevState) => !prevState);
@@ -20,9 +38,16 @@ export default function App() {
       />
       <div className="container mx-auto py-16 flex flex-col items-center justify-center z-50">
         {isIntro ? (
-          <Intro startQuiz={startQuiz} />
+          <Intro
+            startQuiz={startQuiz}
+            handleQuizOptionsChange={handleQuizOptionsChange}
+          />
         ) : (
-          <Quiz startQuiz={startQuiz} />
+          <Quiz
+            startQuiz={startQuiz}
+            quizOptions={quizOptions}
+            handleQuizOptionsChange={handleQuizOptionsChange}
+          />
         )}
       </div>
       <img
