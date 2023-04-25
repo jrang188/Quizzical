@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import YellowBlob from './assets/yellow_blob.svg';
-import BlueBlob from './assets/blue_blob.svg';
-import Intro from './components/Intro';
-import Quiz from './components/Quiz';
+import { useState } from "react";
+import YellowBlob from "./assets/yellow_blob.svg";
+import BlueBlob from "./assets/blue_blob.svg";
+import Intro from "./components/Intro";
+import Quiz from "./components/Quiz";
 
 interface quizOptionsProps {
   category: string;
@@ -13,9 +13,9 @@ interface quizOptionsProps {
 export default function App() {
   const [isIntro, setIsIntro] = useState(true);
   const [quizOptions, setQuizOptions] = useState<quizOptionsProps>({
-    category: '',
-    difficulty: '',
-    type: '',
+    category: "",
+    difficulty: "",
+    type: "",
   });
 
   const handleQuizOptionsChange = (key: string, value: string) => {
@@ -43,7 +43,11 @@ export default function App() {
             handleQuizOptionsChange={handleQuizOptionsChange}
           />
         ) : (
-          <Quiz startQuiz={startQuiz} quizOptions={quizOptions} handleQuizOptionsChange={handleQuizOptionsChange}/>
+          <Quiz
+            startQuiz={startQuiz}
+            quizOptions={quizOptions}
+            handleQuizOptionsChange={handleQuizOptionsChange}
+          />
         )}
       </div>
       <img

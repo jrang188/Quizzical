@@ -1,4 +1,4 @@
-import { Select } from '@chakra-ui/react';
+import { Select } from "@chakra-ui/react";
 interface Category {
   id: number;
   name: string;
@@ -10,30 +10,30 @@ interface IntroProps {
 }
 
 const categories: Category[] = [
-  { id: 9, name: 'General Knowledge' },
-  { id: 10, name: 'Entertainment: Books' },
-  { id: 11, name: 'Entertainment: Film' },
-  { id: 12, name: 'Entertainment: Music' },
-  { id: 13, name: 'Entertainment: Musicals & Theatres' },
-  { id: 14, name: 'Entertainment: Television' },
-  { id: 15, name: 'Entertainment: Video Games' },
-  { id: 16, name: 'Entertainment: Board Games' },
-  { id: 17, name: 'Science & Nature' },
-  { id: 18, name: 'Science: Computers' },
-  { id: 19, name: 'Science: Mathematics' },
-  { id: 20, name: 'Mythology' },
-  { id: 21, name: 'Sports' },
-  { id: 22, name: 'Geography' },
-  { id: 23, name: 'History' },
-  { id: 24, name: 'Politics' },
-  { id: 25, name: 'Art' },
-  { id: 26, name: 'Celebrities' },
-  { id: 27, name: 'Animals' },
-  { id: 28, name: 'Vehicles' },
-  { id: 29, name: 'Entertainment: Comics' },
-  { id: 30, name: 'Science: Gadgets' },
-  { id: 31, name: 'Entertainment: Japanese Anime & Manga' },
-  { id: 32, name: 'Entertainment: Cartoon & Animations' },
+  { id: 9, name: "General Knowledge" },
+  { id: 10, name: "Entertainment: Books" },
+  { id: 11, name: "Entertainment: Film" },
+  { id: 12, name: "Entertainment: Music" },
+  { id: 13, name: "Entertainment: Musicals & Theatres" },
+  { id: 14, name: "Entertainment: Television" },
+  { id: 15, name: "Entertainment: Video Games" },
+  { id: 16, name: "Entertainment: Board Games" },
+  { id: 17, name: "Science & Nature" },
+  { id: 18, name: "Science: Computers" },
+  { id: 19, name: "Science: Mathematics" },
+  { id: 20, name: "Mythology" },
+  { id: 21, name: "Sports" },
+  { id: 22, name: "Geography" },
+  { id: 23, name: "History" },
+  { id: 24, name: "Politics" },
+  { id: 25, name: "Art" },
+  { id: 26, name: "Celebrities" },
+  { id: 27, name: "Animals" },
+  { id: 28, name: "Vehicles" },
+  { id: 29, name: "Entertainment: Comics" },
+  { id: 30, name: "Science: Gadgets" },
+  { id: 31, name: "Entertainment: Japanese Anime & Manga" },
+  { id: 32, name: "Entertainment: Cartoon & Animations" },
 ];
 
 const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
@@ -53,7 +53,7 @@ const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
           variant="outline"
           size="sm"
           placeholder="Category"
-          onChange={(s) => handleQuizOptionsChange('category', s.target.value)}
+          onChange={(s) => handleQuizOptionsChange("category", s.target.value)}
         >
           {categoryOptions.map(({ value, label }) => (
             <option key={value} value={value}>
@@ -66,7 +66,7 @@ const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
           size="sm"
           placeholder="Difficulty"
           onChange={(s) =>
-            handleQuizOptionsChange('difficulty', s.target.value)
+            handleQuizOptionsChange("difficulty", s.target.value)
           }
         >
           <option value="easy">Easy</option>
@@ -77,7 +77,7 @@ const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
           variant="outline"
           size="sm"
           placeholder="Type"
-          onChange={(s) => handleQuizOptionsChange('type', s.target.value)}
+          onChange={(s) => handleQuizOptionsChange("type", s.target.value)}
         >
           <option value="multiple">Multiple Choice</option>
           <option value="boolean">True/False</option>
