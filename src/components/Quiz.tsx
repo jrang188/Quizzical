@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Question from './Question';
+import Submit from './Submit';
 import axios from 'axios';
 
 interface DataProps {
@@ -50,32 +51,11 @@ const Quiz = ({ startQuiz }: QuizProps) => {
   return (
     <div className="w-5/6">
       {questions}
-      <div className="mt-5">
-        {quizDone ? (
-          <div className="flex flex-col items-center justify-center gap-y-2">
-            <h2 className="font-inter font-bold text-lg text-[#293264]">
-              You scored 3/5 correct answers!
-            </h2>
-            <button
-              type="button"
-              className="w-32 h-9 bg-[#4D5B9E] rounded-xl font-inter font-semibold text-sm text-[#F5F7FB]"
-              onClick={startQuiz}
-            >
-              Play Again
-            </button>
-          </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center">
-            <button
-              type="button"
-              className="w-32 h-9 bg-[#4D5B9E] rounded-xl font-inter font-semibold text-sm text-[#F5F7FB]"
-              onClick={checkAnswers}
-            >
-              Check Answers
-            </button>
-          </div>
-        )}
-      </div>
+      <Submit
+        quizDone={quizDone}
+        startQuiz={startQuiz}
+        checkAnswers={checkAnswers}
+      />
     </div>
   );
 };
