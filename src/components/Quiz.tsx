@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import Question from './Question';
 import Submit from './Submit';
 import axios from 'axios';
-import shuffleArray from '../functions/shuffleArray';
 
 interface DataProps {
   category: string;
