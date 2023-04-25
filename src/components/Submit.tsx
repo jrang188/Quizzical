@@ -2,15 +2,16 @@ interface SubmitProps {
   resetQuiz: () => void;
   checkAnswers: () => void;
   quizDone: boolean;
+  score: number
 }
 
-const Submit = ({ quizDone, resetQuiz, checkAnswers}: SubmitProps) => {
+const Submit = ({ quizDone, score, resetQuiz, checkAnswers}: SubmitProps) => {
   return (
     <div className="mt-5">
       {quizDone ? (
         <div className="flex flex-col items-center justify-center gap-y-2">
           <h2 className="font-inter font-bold text-lg text-[#293264]">
-            You scored 3/5 correct answers!
+            You scored {score}/5 correct answers!
           </h2>
           <button
             type="button"

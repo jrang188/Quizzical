@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Question from './Question';
 import Submit from './Submit';
 import axios from 'axios';
@@ -17,16 +17,21 @@ interface QuizProps {
 
 const Quiz = ({ startQuiz }: QuizProps) => {
   const [quizDone, setQuizDone] = useState(false);
+  const [data, setData] = useState<DataProps[]>([]);
+  const [score, setScore] = useState(0);
 
   const checkAnswers = () => {
     setQuizDone((prevState) => !prevState);
   };
 
+  const increaseScore = useCallback(() => {
+    setScore((score) => score + 1);
+  }, []);
+
   const resetQuiz = () => {
     startQuiz();
+    setScore(() => 0);
   };
-
-  const [data, setData] = useState<DataProps[]>([]);
 
   useEffect(() => {
     const client = axios.create({
@@ -49,6 +54,7 @@ const Quiz = ({ startQuiz }: QuizProps) => {
         answers={answers}
         correctAnswer={q.correct_answer}
         quizDone={quizDone}
+        increaseScore={increaseScore}
       />
     );
   });
@@ -60,6 +66,7 @@ const Quiz = ({ startQuiz }: QuizProps) => {
         quizDone={quizDone}
         resetQuiz={resetQuiz}
         checkAnswers={checkAnswers}
+        score={score}
       />
     </div>
   );

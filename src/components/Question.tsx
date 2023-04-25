@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import parse from 'html-react-parser';
 import Answer from './Answer';
 import shuffleArray from '../functions/shuffleArray';
@@ -8,6 +8,7 @@ interface QuestionProps {
   answers: string[];
   correctAnswer: string;
   quizDone: boolean;
+  increaseScore: () => void;
 }
 
 const Question = ({
@@ -15,6 +16,7 @@ const Question = ({
   answers,
   correctAnswer,
   quizDone,
+  increaseScore,
 }: QuestionProps) => {
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
@@ -37,6 +39,16 @@ const Question = ({
       correct={ans === correctAnswer}
     />
   ));
+
+  const handleIncreaseScore = useCallback(() => {
+    increaseScore();
+  }, [increaseScore]);
+
+  useEffect(() => {
+    if (selectedAnswer === correctAnswer && quizDone) {
+      handleIncreaseScore();
+    }
+  }, [quizDone, selectedAnswer, correctAnswer, handleIncreaseScore]);
 
   return (
     <>
