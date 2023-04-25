@@ -6,7 +6,7 @@ import shuffleArray from '../functions/shuffleArray';
 interface QuestionProps {
   question: string;
   answers: string[];
-  corrrectAnswer: string;
+  correctAnswer: string;
 }
 
 const Question = ({ question, answers }: QuestionProps) => {

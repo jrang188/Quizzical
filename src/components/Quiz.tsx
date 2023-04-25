@@ -43,7 +43,7 @@ const Quiz = ({ startQuiz }: QuizProps) => {
         key={i}
         question={q.question}
         answers={answers}
-        corrrectAnswer={q.correct_answer}
+        correctAnswer={q.correct_answer}
       />
     );
   });
