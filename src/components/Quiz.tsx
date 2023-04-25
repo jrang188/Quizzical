@@ -10,8 +10,17 @@ interface DataProps {
   correct_answer: string;
   incorrect_answers: string[];
 }
+interface QuizProps {
+  startQuiz: () => void;
+}
 
-const Quiz = () => {
+const Quiz = ({ startQuiz }: QuizProps) => {
+  const [quizDone, setQuizDone] = useState(false);
+
+  const checkAnswers = () => {
+    setQuizDone((prevState) => !prevState);
+  };
+
   const [data, setData] = useState<DataProps[]>([]);
 
   useEffect(() => {
@@ -24,23 +33,48 @@ const Quiz = () => {
       setData(res.data?.results);
     };
     getQuestions();
-  },[]);
+  }, []);
 
   const questions = data.map((q, i) => {
     const answers = [q.correct_answer, ...q.incorrect_answers];
-    return <Question key={i} question={q.question} answers={answers} corrrectAnswer={q.correct_answer}/>;
+    return (
+      <Question
+        key={i}
+        question={q.question}
+        answers={answers}
+        corrrectAnswer={q.correct_answer}
+      />
+    );
   });
 
   return (
     <div className="w-5/6">
       {questions}
-      <div className="flex flex-row items-center justify-center mt-5">
-        <button
-          type="button"
-          className="w-32 h-9 bg-[#4D5B9E] rounded-xl font-inter font-semibold text-sm text-[#F5F7FB]"
-        >
-          Check Answers
-        </button>
+      <div className="mt-5">
+        {quizDone ? (
+          <div className="flex flex-col items-center justify-center gap-y-2">
+            <h2 className="font-inter font-bold text-lg text-[#293264]">
+              You scored 3/5 correct answers!
+            </h2>
+            <button
+              type="button"
+              className="w-32 h-9 bg-[#4D5B9E] rounded-xl font-inter font-semibold text-sm text-[#F5F7FB]"
+              onClick={startQuiz}
+            >
+              Play Again
+            </button>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center">
+            <button
+              type="button"
+              className="w-32 h-9 bg-[#4D5B9E] rounded-xl font-inter font-semibold text-sm text-[#F5F7FB]"
+              onClick={checkAnswers}
+            >
+              Check Answers
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
