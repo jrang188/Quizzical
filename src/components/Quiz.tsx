@@ -14,9 +14,10 @@ interface DataProps {
 }
 interface QuizProps {
   startQuiz: () => void;
+  quizOptions: { category: string; difficulty: string; type: string };
 }
 
-const Quiz = ({ startQuiz }: QuizProps) => {
+const Quiz = ({ startQuiz, quizOptions }: QuizProps) => {
   const [quizDone, setQuizDone] = useState(false);
   const [data, setData] = useState<DataProps[]>([]);
   const [score, setScore] = useState(0);
@@ -45,6 +46,7 @@ const Quiz = ({ startQuiz }: QuizProps) => {
       const res = await client.get('', {
         params: {
           amount: 5,
+          ...quizOptions,
         },
       });
       if (!alreadyCalled) {

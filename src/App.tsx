@@ -43,7 +43,7 @@ export default function App() {
             handleQuizOptionsChange={handleQuizOptionsChange}
           />
         ) : (
-          <Quiz startQuiz={startQuiz} />
+          <Quiz startQuiz={startQuiz} quizOptions={quizOptions}/>
         )}
       </div>
       <img
