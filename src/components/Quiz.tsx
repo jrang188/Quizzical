@@ -1,8 +1,8 @@
-import { useState, useEffect, useCallback } from "react";
-import { Spinner } from "@chakra-ui/react";
-import Question from "./Question";
-import Submit from "./Submit";
-import axios from "axios";
+import { useState, useEffect, useCallback } from 'react';
+import { Spinner } from '@chakra-ui/react';
+import Question from './Question';
+import Submit from './Submit';
+import axios from 'axios';
 
 interface DataProps {
   category: string;
@@ -38,11 +38,15 @@ const Quiz = ({ startQuiz }: QuizProps) => {
   useEffect(() => {
     let alreadyCalled = false;
     const client = axios.create({
-      baseURL: "https://opentdb.com/api.php",
+      baseURL: 'https://opentdb.com/api.php',
     });
 
     const getQuestions = async () => {
-      const res = await client.get("?amount=5");
+      const res = await client.get('', {
+        params: {
+          amount: 5,
+        },
+      });
       if (!alreadyCalled) {
         setData(res.data?.results);
         setLoading((loading) => !loading);
