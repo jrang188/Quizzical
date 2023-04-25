@@ -5,7 +5,7 @@ import Intro from './components/Intro';
 import Quiz from './components/Quiz';
 
 export default function App() {
-  const [isIntro, setIsIntro] = useState(false);
+  const [isIntro, setIsIntro] = useState(true);
 
   const startQuiz = () => {
     setIsIntro((prevState) => !prevState);

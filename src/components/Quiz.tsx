@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Spinner } from '@chakra-ui/react';
 import Question from './Question';
 import Submit from './Submit';
 import axios from 'axios';
@@ -19,6 +20,7 @@ const Quiz = ({ startQuiz }: QuizProps) => {
   const [quizDone, setQuizDone] = useState(false);
   const [data, setData] = useState<DataProps[]>([]);
   const [score, setScore] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const checkAnswers = () => {
     setQuizDone((prevState) => !prevState);
@@ -34,15 +36,23 @@ const Quiz = ({ startQuiz }: QuizProps) => {
   };
 
   useEffect(() => {
+    let alreadyCalled = false;
     const client = axios.create({
       baseURL: 'https://opentdb.com/api.php',
     });
 
     const getQuestions = async () => {
       const res = await client.get('?amount=5');
-      setData(res.data?.results);
+      if (!alreadyCalled) {
+        setData(res.data?.results);
+        setLoading((loading) => !loading);
+      }
     };
-    getQuestions();
+    getQuestions().catch((error) => console.log(error));
+
+    return () => {
+      alreadyCalled = true;
+    };
   }, []);
 
   const questions = data.map((q, i) => {
@@ -61,6 +71,7 @@ const Quiz = ({ startQuiz }: QuizProps) => {
 
   return (
     <div className="w-5/6">
+      {loading ? <Spinner /> : ''}
       {questions}
       <Submit
         quizDone={quizDone}
