@@ -71,14 +71,27 @@ const Quiz = ({ startQuiz }: QuizProps) => {
 
   return (
     <div className="w-5/6">
-      {loading ? <Spinner /> : ''}
-      {questions}
-      <Submit
-        quizDone={quizDone}
-        resetQuiz={resetQuiz}
-        checkAnswers={checkAnswers}
-        score={score}
-      />
+      {loading ? (
+        <div className="flex flex-col items-center justify-center">
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+          />
+        </div>
+      ) : (
+        <>
+          {questions}
+          <Submit
+            quizDone={quizDone}
+            resetQuiz={resetQuiz}
+            checkAnswers={checkAnswers}
+            score={score}
+          />
+        </>
+      )}
     </div>
   );
 };
