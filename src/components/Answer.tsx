@@ -30,6 +30,7 @@ const Answer = ({
           : 'border-[#4D5B9E] border-solid border'
       }`}
       onClick={handleSelectedAnswer}
+      disabled={quizDone}
     >
       <div className="font-inter font-medium text-sm text-[#293264]">
         {parse(answer)}
