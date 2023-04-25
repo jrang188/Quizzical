@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import parse from 'html-react-parser';
 import Answer from './Answer';
+import shuffleArray from '../functions/shuffleArray';
 
 interface QuestionProps {
   question: string;
@@ -16,19 +17,24 @@ const Question = ({
   quizDone,
 }: QuestionProps) => {
   const [selectedAnswer, setSelectedAnswer] = useState('');
+  const [shuffledAnswers, setShuffledAnswers] = useState<string[]>([]);
+
+  useEffect(() => {
+    setShuffledAnswers(shuffleArray(answers));
+  }, [answers]);
 
   const handleSelectedAnswer = (ans: string) => {
     setSelectedAnswer(ans);
   };
 
-  const answersComponent = answers.map((ans, i) => (
+  const answersComponent = shuffledAnswers.map((ans, i) => (
     <Answer
       answer={ans}
       key={i}
       selected={selectedAnswer == ans}
       handleSelectedAnswer={() => handleSelectedAnswer(ans)}
       quizDone={quizDone}
-      correct={ans == correctAnswer}
+      correct={ans === correctAnswer}
     />
   ));
 

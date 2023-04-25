@@ -23,6 +23,10 @@ const Quiz = ({ startQuiz }: QuizProps) => {
     setQuizDone((prevState) => !prevState);
   };
 
+  const resetQuiz = () => {
+    startQuiz();
+  };
+
   const [data, setData] = useState<DataProps[]>([]);
 
   useEffect(() => {
@@ -38,7 +42,7 @@ const Quiz = ({ startQuiz }: QuizProps) => {
   }, []);
 
   const questions = data.map((q, i) => {
-    const answers = shuffleArray([q.correct_answer, ...q.incorrect_answers]);
+    const answers = [q.correct_answer, ...q.incorrect_answers];
     return (
       <Question
         key={i}
@@ -55,7 +59,7 @@ const Quiz = ({ startQuiz }: QuizProps) => {
       {questions}
       <Submit
         quizDone={quizDone}
-        startQuiz={startQuiz}
+        resetQuiz={resetQuiz}
         checkAnswers={checkAnswers}
       />
     </div>

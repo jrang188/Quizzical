@@ -1,10 +1,10 @@
 interface SubmitProps {
-  startQuiz: () => void;
+  resetQuiz: () => void;
   checkAnswers: () => void;
   quizDone: boolean;
 }
 
-const Submit = ({ quizDone, startQuiz, checkAnswers }: SubmitProps) => {
+const Submit = ({ quizDone, resetQuiz, checkAnswers}: SubmitProps) => {
   return (
     <div className="mt-5">
       {quizDone ? (
@@ -15,7 +15,7 @@ const Submit = ({ quizDone, startQuiz, checkAnswers }: SubmitProps) => {
           <button
             type="button"
             className="w-32 h-9 bg-[#4D5B9E] rounded-xl font-inter font-semibold text-sm text-[#F5F7FB]"
-            onClick={startQuiz}
+            onClick={resetQuiz}
           >
             Play Again
           </button>
