@@ -50,14 +50,14 @@ const Question = ({
     }
   }, [quizDone, selectedAnswer, correctAnswer, handleIncreaseScore]);
 
-  return (
-    <>
-      <h2 className="font-karla font-bold text-base leading-tight mt-0 mb-1 text-[#293264]">
+  return ( 
+    <div className="md:mb-8">
+      <h2 className="font-karla font-bold text-base md:text-2xl leading-tight mt-0 mb-1 text-[#293264]">
         {parse(question)}
       </h2>
       <div className="flex flex-wrap gap-2 mt-0 mb-2">{answersComponent}</div>
       <div className="border-[#DBDEF0] border-solid border-[0.05rem] my-1" />
-    </>
+    </div>
   );
 };
 

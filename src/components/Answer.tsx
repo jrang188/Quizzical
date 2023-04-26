@@ -18,7 +18,7 @@ const Answer = ({
   return (
     <button
       type="button"
-      className={`rounded-md min-w-[66px] px-1.5 ${
+      className={`rounded-lg min-w-[66px] px-1.5 ${
         quizDone
           ? correct
             ? "bg-[#94D7A2]"
@@ -32,7 +32,7 @@ const Answer = ({
       onClick={handleSelectedAnswer}
       disabled={quizDone}
     >
-      <div className="font-inter font-medium text-sm text-[#293264]">
+      <div className="font-inter font-medium text-sm md:text-xl text-[#293264]">
         {parse(answer)}
       </div>
     </button>
