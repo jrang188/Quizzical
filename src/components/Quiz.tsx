@@ -67,7 +67,7 @@ const Quiz = ({
     return () => {
       alreadyCalled = true;
     };
-  }, []);
+  }, [quizOptions]);
 
   const questions = data.map((q, i) => {
     const answers = [q.correct_answer, ...q.incorrect_answers];
