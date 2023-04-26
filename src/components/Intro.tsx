@@ -44,14 +44,14 @@ const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
 
   return (
     <div className="flex flex-col justify-center items-center text-[#293264] gap-y-4">
-      <h1 className="font-karla font-bold text-5xl ">Quizzical</h1>
-      <h2 className="font-inter font-normal text-2xl">
+      <h1 className="font-karla font-bold text-5xl md:text-6xl">Quizzical</h1>
+      <h2 className="font-inter font-normal text-2xl md:text-3xl">
         Leave blank for random
       </h2>
       <div className="flex flex-col justify-center items-center gap-y-2">
         <Select
           variant="outline"
-          size="sm"
+          size="md"
           placeholder="Category"
           onChange={(s) => handleQuizOptionsChange("category", s.target.value)}
         >
@@ -63,7 +63,7 @@ const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
         </Select>
         <Select
           variant="outline"
-          size="sm"
+          size="md"
           placeholder="Difficulty"
           onChange={(s) =>
             handleQuizOptionsChange("difficulty", s.target.value)
@@ -75,7 +75,7 @@ const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
         </Select>
         <Select
           variant="outline"
-          size="sm"
+          size="md"
           placeholder="Type"
           onChange={(s) => handleQuizOptionsChange("type", s.target.value)}
         >
@@ -84,7 +84,7 @@ const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
         </Select>
       </div>
       <button
-        className="w-48 h-16 bg-[#4D5B9E] rounded-2xl font-inter font-medium text-[#F5F7FB]"
+        className="w-48 h-16 bg-[#4D5B9E] rounded-2xl font-inter font-medium md:text-2xl text-[#F5F7FB]"
         type="button"
         onClick={startQuiz}
       >
