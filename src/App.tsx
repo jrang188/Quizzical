@@ -1,33 +1,17 @@
-import { useState } from "react";
 import YellowBlob from "./assets/yellow_blob.svg";
 import BlueBlob from "./assets/blue_blob.svg";
 import Intro from "./components/Intro";
 import Quiz from "./components/Quiz";
-
-interface quizOptionsProps {
-  category: string;
-  difficulty: string;
-  type: string;
-}
+import { useAppSelector } from "./app/hooks.ts";
 
 export default function App() {
-  const [isIntro, setIsIntro] = useState(true);
-  const [quizOptions, setQuizOptions] = useState<quizOptionsProps>({
-    category: "",
-    difficulty: "",
-    type: "",
-  });
+  // const [isIntro, setIsIntro] = useState(true);
 
-  const handleQuizOptionsChange = (key: string, value: string) => {
-    setQuizOptions((prevState) => ({
-      ...prevState,
-      [key]: value,
-    }));
-  };
+  // const startQuiz = () => {
+  //   setIsIntro((prevState) => !prevState);
+  // };
 
-  const startQuiz = () => {
-    setIsIntro((prevState) => !prevState);
-  };
+  const isIntro = useAppSelector((state) => state.start.atStart);
 
   return (
     <main className="flex min-h-screen bg-[#F5F7FB]">
@@ -37,18 +21,7 @@ export default function App() {
         className="fixed z-0 top-0 right-0"
       />
       <div className="container mx-auto py-16 flex flex-col items-center justify-center z-50">
-        {isIntro ? (
-          <Intro
-            startQuiz={startQuiz}
-            handleQuizOptionsChange={handleQuizOptionsChange}
-          />
-        ) : (
-          <Quiz
-            startQuiz={startQuiz}
-            quizOptions={quizOptions}
-            handleQuizOptionsChange={handleQuizOptionsChange}
-          />
-        )}
+        {isIntro ? <Intro /> : <Quiz />}
       </div>
       <img
         src={BlueBlob}

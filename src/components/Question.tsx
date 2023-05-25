@@ -50,7 +50,7 @@ const Question = ({
     }
   }, [quizDone, selectedAnswer, correctAnswer, handleIncreaseScore]);
 
-  return ( 
+  return (
     <div className="md:mb-8">
       <h2 className="font-karla font-bold text-base md:text-2xl leading-tight mt-0 mb-1 text-[#293264]">
         {parse(question)}

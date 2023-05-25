@@ -1,12 +1,10 @@
 import { Select } from "@chakra-ui/react";
+import { useAppDispatch } from "../app/hooks";
+import { setCategory, setDifficulty, setType } from "../app/optionsSlice";
+import { start } from "../app/startSlice.ts";
 interface Category {
   id: number;
   name: string;
-}
-
-interface IntroProps {
-  startQuiz: () => void;
-  handleQuizOptionsChange: (key: string, value: string) => void;
 }
 
 const categories: Category[] = [
@@ -36,7 +34,9 @@ const categories: Category[] = [
   { id: 32, name: "Entertainment: Cartoon & Animations" },
 ];
 
-const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
+const Intro = () => {
+  const dispatch = useAppDispatch();
+
   const categoryOptions = categories.map(({ id, name }) => ({
     value: id,
     label: name,
@@ -53,7 +53,7 @@ const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
           variant="outline"
           size="md"
           placeholder="Category"
-          onChange={(s) => handleQuizOptionsChange("category", s.target.value)}
+          onChange={(s) => dispatch(setCategory(s.target.value))}
         >
           {categoryOptions.map(({ value, label }) => (
             <option key={value} value={value}>
@@ -65,9 +65,7 @@ const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
           variant="outline"
           size="md"
           placeholder="Difficulty"
-          onChange={(s) =>
-            handleQuizOptionsChange("difficulty", s.target.value)
-          }
+          onChange={(s) => dispatch(setDifficulty(s.target.value))}
         >
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>
@@ -77,7 +75,7 @@ const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
           variant="outline"
           size="md"
           placeholder="Type"
-          onChange={(s) => handleQuizOptionsChange("type", s.target.value)}
+          onChange={(s) => dispatch(setType(s.target.value))}
         >
           <option value="multiple">Multiple Choice</option>
           <option value="boolean">True/False</option>
@@ -86,7 +84,7 @@ const Intro = ({ startQuiz, handleQuizOptionsChange }: IntroProps) => {
       <button
         className="w-48 h-16 bg-[#4D5B9E] rounded-2xl font-inter font-medium md:text-2xl text-[#F5F7FB]"
         type="button"
-        onClick={startQuiz}
+        onClick={() => dispatch(start())}
       >
         Start quiz
       </button>
