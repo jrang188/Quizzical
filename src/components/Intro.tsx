@@ -1,6 +1,6 @@
 import { Select } from "@chakra-ui/react";
 import { useAppDispatch } from "../app/hooks";
-import { setCategory, setDifficulty, setType } from "../app/optionSlice";
+import { setCategory, setDifficulty, setType } from "../app/optionsSlice";
 interface Category {
   id: number;
   name: string;

@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { quizOptionsSlice } from "./optionSlice";
+import { optionsSlice } from "./optionsSlice";
 
 export const store = configureStore({
   reducer: {
-    quizOptions: quizOptionsSlice.reducer,
+    options: optionsSlice.reducer,
   },
 });
 

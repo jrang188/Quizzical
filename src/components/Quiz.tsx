@@ -5,7 +5,7 @@ import Submit from "./Submit";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../app/store";
-import { resetQuizOptions } from "../app/optionSlice";
+import { resetOptions } from "../app/optionsSlice";
 
 interface DataProps {
   category: string;
@@ -19,16 +19,14 @@ interface QuizProps {
   startQuiz: () => void;
 }
 
-const Quiz = ({
-  startQuiz,
-}: QuizProps) => {
+const Quiz = ({ startQuiz }: QuizProps) => {
   const [quizDone, setQuizDone] = useState(false);
   const [data, setData] = useState<DataProps[]>([]);
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
 
-  const quizOptions = useSelector((state: RootState) => state.quizOptions)
-  const dispatch = useDispatch()
+  const quizOptions = useSelector((state: RootState) => state.options);
+  const dispatch = useDispatch();
 
   const checkAnswers = () => {
     setQuizDone((prevState) => !prevState);
@@ -41,7 +39,7 @@ const Quiz = ({
   const resetQuiz = () => {
     startQuiz();
     setScore(() => 0);
-    dispatch(resetQuizOptions());
+    dispatch(resetOptions());
   };
 
   useEffect(() => {

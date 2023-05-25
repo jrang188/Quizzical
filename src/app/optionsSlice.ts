@@ -2,20 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "./store";
 
-interface quizOptionsProps {
+interface OptionsProps {
   category: string;
   difficulty: string;
   type: string;
 }
 
-const initialState: quizOptionsProps = {
+const initialState: OptionsProps = {
   category: "",
   difficulty: "",
   type: "",
 };
 
-export const quizOptionsSlice = createSlice({
-  name: "quizOptions",
+export const optionsSlice = createSlice({
+  name: "options",
   initialState,
   reducers: {
     setCategory: (state, action: PayloadAction<string>) => {
@@ -27,7 +27,7 @@ export const quizOptionsSlice = createSlice({
     setType: (state, action: PayloadAction<string>) => {
       state.type = action.payload;
     },
-    resetQuizOptions: (state) => {
+    resetOptions: (state) => {
       state.category = "";
       state.difficulty = "";
       state.type = "";
@@ -35,9 +35,9 @@ export const quizOptionsSlice = createSlice({
   },
 });
 
-export const { setCategory, setDifficulty, setType, resetQuizOptions } =
-  quizOptionsSlice.actions;
+export const { setCategory, setDifficulty, setType, resetOptions } =
+  optionsSlice.actions;
 
-export const selectQuizOptions = (state: RootState) => state.quizOptions;
+export const selectOptions = (state: RootState) => state.options;
 
-export default quizOptionsSlice.reducer;
+export default optionsSlice.reducer;
