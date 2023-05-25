@@ -18,8 +18,19 @@ export const quizOptionsSlice = createSlice({
   name: "quizOptions",
   initialState,
   reducers: {
-    setQuizOptions: (state, action: PayloadAction<quizOptionsProps>) => {
-      state = { ...state, ...action.payload };
+    setCategory: (state, action: PayloadAction<string>) => {
+      state.category = action.payload;
+    },
+    setDifficulty: (state, action: PayloadAction<string>) => {
+      state.difficulty = action.payload;
+    },
+    setType: (state, action: PayloadAction<string>) => {
+      state.type = action.payload;
+    },
+    resetQuizOptions: (state) => {
+      state.category = "";
+      state.difficulty = "";
+      state.type = "";
     },
   },
 });
