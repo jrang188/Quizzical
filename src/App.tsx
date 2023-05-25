@@ -1,16 +1,18 @@
-import { useState } from "react";
 import YellowBlob from "./assets/yellow_blob.svg";
 import BlueBlob from "./assets/blue_blob.svg";
 import Intro from "./components/Intro";
 import Quiz from "./components/Quiz";
+import {useAppSelector} from "./app/hooks.ts";
 
 
 export default function App() {
-  const [isIntro, setIsIntro] = useState(true);
+  // const [isIntro, setIsIntro] = useState(true);
 
-  const startQuiz = () => {
-    setIsIntro((prevState) => !prevState);
-  };
+  // const startQuiz = () => {
+  //   setIsIntro((prevState) => !prevState);
+  // };
+
+  const isIntro = useAppSelector((state) => state.start.atStart);
 
   return (
     <main className="flex min-h-screen bg-[#F5F7FB]">
@@ -21,13 +23,9 @@ export default function App() {
       />
       <div className="container mx-auto py-16 flex flex-col items-center justify-center z-50">
         {isIntro ? (
-          <Intro
-            startQuiz={startQuiz}
-          />
+          <Intro/>
         ) : (
-          <Quiz
-            startQuiz={startQuiz}
-          />
+          <Quiz/>
         )}
       </div>
       <img

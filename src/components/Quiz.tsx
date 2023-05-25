@@ -6,6 +6,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../app/store";
 import { resetOptions } from "../app/optionsSlice";
+import {reset} from "../app/startSlice.ts";
 
 interface DataProps {
   category: string;
@@ -15,11 +16,8 @@ interface DataProps {
   correct_answer: string;
   incorrect_answers: string[];
 }
-interface QuizProps {
-  startQuiz: () => void;
-}
 
-const Quiz = ({ startQuiz }: QuizProps) => {
+const Quiz = () => {
   const [quizDone, setQuizDone] = useState(false);
   const [data, setData] = useState<DataProps[]>([]);
   const [score, setScore] = useState(0);
@@ -37,7 +35,7 @@ const Quiz = ({ startQuiz }: QuizProps) => {
   }, []);
 
   const resetQuiz = () => {
-    startQuiz();
+    dispatch(reset())
     setScore(() => 0);
     dispatch(resetOptions());
   };

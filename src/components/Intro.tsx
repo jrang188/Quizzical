@@ -1,13 +1,10 @@
 import { Select } from "@chakra-ui/react";
 import { useAppDispatch } from "../app/hooks";
 import { setCategory, setDifficulty, setType } from "../app/optionsSlice";
+import {start} from "../app/startSlice.ts";
 interface Category {
   id: number;
   name: string;
-}
-
-interface IntroProps {
-  startQuiz: () => void;
 }
 
 const categories: Category[] = [
@@ -37,7 +34,7 @@ const categories: Category[] = [
   { id: 32, name: "Entertainment: Cartoon & Animations" },
 ];
 
-const Intro = ({ startQuiz }: IntroProps) => {
+const Intro = () => {
   const dispatch = useAppDispatch();
 
   const categoryOptions = categories.map(({ id, name }) => ({
@@ -87,7 +84,7 @@ const Intro = ({ startQuiz }: IntroProps) => {
       <button
         className="w-48 h-16 bg-[#4D5B9E] rounded-2xl font-inter font-medium md:text-2xl text-[#F5F7FB]"
         type="button"
-        onClick={startQuiz}
+        onClick={() => dispatch(start())}
       >
         Start quiz
       </button>
