@@ -3,6 +3,9 @@ import { Spinner } from "@chakra-ui/react";
 import Question from "./Question";
 import Submit from "./Submit";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../app/store";
+import { resetQuizOptions } from "../app/optionSlice";
 
 interface DataProps {
   category: string;
@@ -14,19 +17,18 @@ interface DataProps {
 }
 interface QuizProps {
   startQuiz: () => void;
-  quizOptions: { category: string; difficulty: string; type: string };
-  handleQuizOptionsChange: (key: string, value: string) => void;
 }
 
 const Quiz = ({
   startQuiz,
-  quizOptions,
-  handleQuizOptionsChange,
 }: QuizProps) => {
   const [quizDone, setQuizDone] = useState(false);
   const [data, setData] = useState<DataProps[]>([]);
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
+
+  const quizOptions = useSelector((state: RootState) => state.quizOptions)
+  const dispatch = useDispatch()
 
   const checkAnswers = () => {
     setQuizDone((prevState) => !prevState);
@@ -39,9 +41,7 @@ const Quiz = ({
   const resetQuiz = () => {
     startQuiz();
     setScore(() => 0);
-    handleQuizOptionsChange("category", "");
-    handleQuizOptionsChange("difficulty", "");
-    handleQuizOptionsChange("type", "");
+    dispatch(resetQuizOptions());
   };
 
   useEffect(() => {
