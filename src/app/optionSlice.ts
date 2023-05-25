@@ -35,7 +35,8 @@ export const quizOptionsSlice = createSlice({
   },
 });
 
-export const { setQuizOptions } = quizOptionsSlice.actions;
+export const { setCategory, setDifficulty, setType, resetQuizOptions } =
+  quizOptionsSlice.actions;
 
 export const selectQuizOptions = (state: RootState) => state.quizOptions;
 
