@@ -9,7 +9,8 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "prettier": "prettier --write src",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.5.5",
@@ -24,6 +25,8 @@
     "react-redux": "^8.0.5"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
@@ -34,11 +37,13 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
+    "jsdom": "^22.0.0",
     "postcss": "^8.4.23",
     "prettier": "2.8.7",
     "tailwindcss": "^3.3.1",
     "typescript": "^5.0.2",
-    "vite": "^4.3.0"
+    "vite": "^4.3.0",
+    "vitest": "^0.31.1"
   },
   "packageManager": "yarn@3.5.0"
 }
