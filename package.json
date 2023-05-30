@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
-    "test:ui": "vitest --ui",
+    "test:ui": "vitest --ui --api 9527",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
@@ -36,6 +36,8 @@
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react-swc": "^3.0.0",
+    "@vitest/coverage-c8": "^0.31.1",
+    "@vitest/ui": "^0.31.1",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
